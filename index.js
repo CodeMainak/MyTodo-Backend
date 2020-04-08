@@ -26,13 +26,13 @@ mongoose.connect(dbConfig.url, {
     console.log('Could not connect to the database. Exiting now...', err);
     process.exit();
 });
-
+const port=process.env.port||9000
 // define a simple route
 app.get('/', (req, res) => {
     res.json("Welcome to EasyNotes application.");
 });
 require('./app/routes/note.routes.js')(app);
 // listen for requests
-app.listen(9000, () => {
+app.listen(port, () => {
     console.log("Server is listening on port 3000");
 });
